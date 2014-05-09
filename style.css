@@ -1,0 +1,23 @@
+body{
+	background-color:gray;
+	height:500px;
+}
+span{
+	color:red;
+}
+h1{
+	text-align:center;
+	margin-top:3%;
+	color:white;
+}
+.wrapper{
+	width:50%;
+	height:70%;
+	background-color: lightgray;
+	margin: 7% auto;
+	border:2px solid;
+	border-color:black;
+}
+.formsBackground{
+	background-color:lightgray;
+}

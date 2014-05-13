@@ -1,8 +1,8 @@
 
 <?php
-	include '../../config/db_con.php';
-	include '../../data/groups.php';
-	include '../../data/users.php';
+	require_once '../../config/db_con.php';
+	require_once '../../data/groups.php';
+	require_once '../../data/users.php';
 ?>
 
 <?php
@@ -12,6 +12,7 @@
 		$_username=$_POST['username'];
 		$_password=$_POST['pass'];
 		$_repassword=$_POST['repeat_pass'];
+		$_user_groups=$_POST['user_groups'];
 		if(isset($_POST['is_admin'])){
 			$_is_admin = 1;
 		}
@@ -19,7 +20,7 @@
 			$_is_admin = 0;
 		}
 		if($_password==$_repassword){
-			db_addNewUSer($_username, $_password, $_is_admin, 0); // 0 means the user's not delted ()
+			echo db_addNewUSer($_username, $_password, $_is_admin, $_user_groups, 0); // 0 means the user's not delted ()
 			echo "<script type='text/javascript'>
 					alert('User created successfully!');
 					window.location.href='adminPanel.php';
@@ -63,7 +64,7 @@
 			<input type="checkbox" name="is_admin" id="is_admin" value="1">Admin rights <br><br>			
 			<div class="ui-widget">
 				<label for="user_groups">User groups: </label><br>
-				<input id="user_groups" size="30"><br><br>	
+				<input id="user_groups" name="user_groups" size="30"><br><br>	
 			</div>
 			<input type="submit" value="Create" name="submit">
 		</fieldset>

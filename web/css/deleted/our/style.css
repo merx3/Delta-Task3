@@ -1,0 +1,40 @@
+body{
+height:500px;
+}
+span{
+color:red;
+}
+h1{
+text-align:center;
+text-decoration:underline;
+margin-top:3%;
+color:gray;
+}
+.wrapper{
+width:50%;
+height:70%;
+background-color: lightgray;
+margin: 7% auto;
+border:2px solid;
+border-color:black;
+}
+.formsBackground{
+background-color:lightgray;
+}
+th {
+background-color: gray; 
+}
+td,th {
+padding: 4px 5px; 
+}
+tr:nth-of-type(odd){
+background: lightgray;
+}
+.buttons{
+border:1px solid;
+background: white;
+color:black;
+}
+.buttons:hover{
+background:gray;
+}

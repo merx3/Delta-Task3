@@ -4,9 +4,21 @@
 		$query = 'SELECT `name` FROM `groups`';
 		$result = $_dbcon->query($query);
 		$groups = array();
-		while($row = $result->fetch_assoc()){
-            $workdays[] = $row["name"]; 
+		if($result->num_rows > 0){
+		    while($row = $result->fetch_assoc()){
+	                $groups[] = $row["name"]; 	
+		    }
 		}
-        return $workdays;
+        return $groups;
+	}
+
+	function db_getGroupId($group_name){		
+		global $_dbcon;
+		$query = 'SELECT `group_id` FROM `groups` WHERE `name`=\''.$group_name.'\' LIMIT 1';
+		$result = $_dbcon->query($query);
+		$groups = array();
+		$row = $result->fetch_assoc();
+        $group_id= (int)$row["group_id"]; 	
+        return $group_id;
 	}
 ?>

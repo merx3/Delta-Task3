@@ -1,6 +1,32 @@
 <?php
 ob_start();
 ?>
+<?php
+if(isset($_POST['submit'])){
+	include '../config/db_con.php';
+	include '../framework/login_functionality.php';
+	global $_dbcon;
+	$login_username=$_POST['username'];
+	$login_password=$_POST['password'];
+	$login_username = $_dbcon->real_escape_string($login_username);
+	$login_password = $_dbcon->real_escape_string($login_password);
+	$sql="SELECT*FROM users WHERE name='$login_username' AND password='$login_password'";
+	$result= $_dbcon->query($sql);
+	$count=$result->num_rows;
+	$row=$result->fetch_assoc();
+	if($count==1){
+		if ($row['is_admin']==1) { 
+    			header("Location: admin/adminPanel.php");
+		} 
+		elseif($row['is_admin']==0) {
+    			header("Location: user/userPage.php");  
+		}
+	}
+	else{
+		echo "<script type='text/javascript'>alert('Error! Wrong username or password!')</script>";
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,31 +45,5 @@ ob_start();
 </fieldset>
 </form>
 </div>
-<?php
-if(isset($_POST['submit'])){
-	include'../config/db_con.php';
-	$login_username=$_POST['username'];
-	$login_password=$_POST['password'];
-	$login_username = stripslashes($login_username);
-	$login_password = stripslashes($login_password);
-	$login_username = mysql_real_escape_string($login_username);
-	$login_password = mysql_real_escape_string($login_password);
-	$sql="SELECT*FROM users WHERE name='$login_username' AND password='$login_password'";
-	$result=mysql_query($sql) or die(mysql_error());
-	$count=mysql_num_rows($result);
-	$row=mysql_fetch_array($result);
-	if($count==1){
-		if ($row['is_admin']==1) { 
-    			header("Location: admin/adminPanel.php");
-		} 
-		elseif($row['is_admin']==0) {
-    			header("Location: user/userPage.html");  
-		}
-	}
-	else{
-		echo "<script type='text/javascript'>alert('Error! Wrong username or password!')</script>";
-	}
-}
-?>
 </body>
 </html>

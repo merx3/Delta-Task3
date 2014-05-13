@@ -21,3 +21,48 @@ h1{
 .formsBackground{
 	background-color:lightgray;
 }
+
+.logout-button{
+	float:right;
+	padding-right:40px;
+}
+#navigationMenu a{
+	text-decoration: none;
+	display:block; 
+	height:100%;
+}
+#navigationMenu ul { 
+	padding:1; 
+	margin:1;
+	list-style:none; 
+} 
+#navigationMenu li {
+	float:left; 
+	position:relative; 
+	padding:5px 10px 5px;
+	border:2px solid #000000; 
+	border-style:inset; 
+} 
+#navigationMenu li ul { 
+	display:none; 
+	position:absolute; 
+	margin-top:7px;
+	margin-left:-10px;
+	padding:0px;
+} 
+#navigationMenu li:hover ul{ 
+	display:table; 
+	background:LightSlateGray ; 
+	height:auto; 
+	width:8em; 
+} 
+#navigationMenu li ul li{ 
+	clear:both; 
+	border:1px solid #000000;
+	width: inherit;
+	display: table-cell;
+}
+#pageContent{
+	clear:both;
+}
+
